@@ -1,0 +1,12 @@
+{
+    "*.{js,ts,tsx}": [
+      "yarn lint:js",
+      "git add"
+    ],
+    "**/*.css": [
+      "yarn lint:css",
+      "git add"
+    ]
+  }
+
+  
