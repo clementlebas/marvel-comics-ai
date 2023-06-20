@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { FiInfo } from 'react-icons/fi';
 import { Tooltip, Button, Grid, Checkbox } from "@nextui-org/react";
 
+import { fetchCharacters } from "./APIcalls"
+
 import './marvelCharacters.css';
 
 interface Character {
@@ -20,19 +22,9 @@ const MarvelCharacters: React.FC = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          'https://gateway.marvel.com/v1/public/characters?apikey=45ee98c5639f56f2d772fe53c1ab716e&orderBy=-modified&limit=100'
-        );
-        const data = await response.json();
-        setCharacters(data.data.results);
-      } catch (error) {
-        console.log('Error fetching characters:', error);
-      }
-    };
-
-    fetchData();
+    fetchCharacters().then((response) => {
+      setCharacters(response.data.results);
+    });
   }, []);
 
   const [selectedCharacters, setSelectedCharacters] = useState<number[]>([]);
