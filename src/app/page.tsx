@@ -1,14 +1,17 @@
 import Image from 'next/image'
 import styles from './page.module.css'
+import MarvelCharacters from './marvelCharacters'
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <div className={`${styles.description} ${styles.center}`}>
+      <div className={`${styles.description}`}>
         <p>
           Marvel Project by Clément Le Bas
         </p>
       </div>
+
+      <MarvelCharacters />
 
       <div className={`${styles.grid} ${styles.center}`}>
         <a
