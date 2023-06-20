@@ -87,13 +87,16 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-}
+    */
+    background-image: linear-gradient(to left top, #4b0908, #5c090b, #6e080c, #80060c, #92050a, #9c1908, #a62804, #b03500, #b34a00, #b65c00, #b86d02, #b97d10);
+} 
+
 
 a {
   color: inherit;
@@ -102,6 +105,6 @@ a {
 
 @media (prefers-color-scheme: dark) {
   html {
-    color-scheme: dark;
+    /* color-scheme: dark; */
   }
 }
