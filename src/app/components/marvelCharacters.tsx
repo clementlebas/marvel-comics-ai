@@ -4,12 +4,12 @@ import React, { useEffect, useState } from 'react';
 import { FiInfo } from 'react-icons/fi';
 import { Tooltip, Button, Grid, Checkbox } from '@nextui-org/react';
 import { useDispatch } from 'react-redux';
+import Link from 'next/link';
 
-import { setSelectedCharactersReducer } from './redux/appSlice';
-import styles from './page.module.css';
-import { fetchCharacters } from './APIcalls';
-
-import './marvelCharacters.css';
+import { setSelectedCharactersReducer } from '../redux/appSlice';
+import { fetchCharacters } from '../APIcalls';
+import styles from '../styles/page.module.css';
+import '../styles/marvelCharacters.css';
 
 interface Character {
   id: number;
@@ -46,7 +46,6 @@ const MarvelCharacters: React.FC = () => {
   return (
     <>
       <div className="marvel-characters__container">
-        <h1>Marvel Characters</h1>
         <div className="marvel-characters__tab">
           <div className="marvel-characters__header">
             <div className="marvel-characters__column">Select</div>
@@ -97,32 +96,29 @@ const MarvelCharacters: React.FC = () => {
           })}
         </div>
       </div>
-      <div
-        className={`${styles.grid} ${styles.center}`}
-        onClick={() => {
-          const selectedCharactersFormated = selectedCharacters
-            .map((id) => characters.find((character) => character.id === id))
-            .map((character) => {
-              if (!character) return;
-              const { id, name, description } = character;
-              const urlImage = `${character.thumbnail.path}/standard_fantastic.${character.thumbnail.extension}`;
-              return { id, name, description, urlImage };
-            });
-
-          dispatch(setSelectedCharactersReducer({ selectedCharacters: selectedCharactersFormated }));
-          console.log(selectedCharactersFormated);
-        }}
-      >
-        <a
-          //href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+      <div className={`${styles.grid} ${styles.center}`}>
+        <Link
+          href="/secondPage"
           className={styles.card}
-          target="_blank"
           rel="noopener noreferrer"
+          onClick={() => {
+            const selectedCharactersFormated = selectedCharacters
+              .map((id) => characters.find((character) => character.id === id))
+              .map((character) => {
+                if (!character) return;
+                const { id, name, description } = character;
+                const urlImage = `${character.thumbnail.path}/standard_fantastic.${character.thumbnail.extension}`;
+                return { id, name, description, urlImage };
+              });
+
+            dispatch(setSelectedCharactersReducer({ selectedCharacters: selectedCharactersFormated }));
+            console.log(selectedCharactersFormated);
+          }}
         >
           <h2 className={styles.center}>
             Start <span>-&gt;</span>
           </h2>
-        </a>
+        </Link>
       </div>
     </>
   );
