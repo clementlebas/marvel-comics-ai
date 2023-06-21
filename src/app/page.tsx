@@ -1,31 +1,21 @@
-import Image from 'next/image'
-import styles from './page.module.css'
-import MarvelCharacters from './marvelCharacters'
+'use client';
+
+import { Provider } from 'react-redux';
+
+import { store } from './redux/store';
+import styles from './page.module.css';
+import MarvelCharacters from './marvelCharacters';
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <div className={`${styles.description}`}>
-        <p>
-          Marvel Project by Clément Le Bas
-        </p>
-      </div>
+      <Provider store={store}>
+        <div className={`${styles.description}`}>
+          <p>Marvel Project by Clément Le Bas</p>
+        </div>
 
-      <MarvelCharacters />
-
-      <div className={`${styles.grid} ${styles.center}`}>
-        <a
-          //href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={styles.center}>
-            Start <span>-&gt;</span>
-          </h2>
-        </a>
-
-      </div>
+        <MarvelCharacters />
+      </Provider>
     </main>
-  )
+  );
 }
