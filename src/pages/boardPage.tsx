@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Image from 'next/image';
 
@@ -19,41 +19,48 @@ interface SelectedCharacters extends Array<SelectedCharacter> {}
 
 export default function BoardPage() {
   const dispatch = useDispatch();
-  // @ts-ignore
-  // const selectedCharacters = useSelector((state): SelectedCharacters => state?.app.selectedCharacters);
-  const selectedCharacters = [
-    {
-      id: 1009515,
-      name: 'Punisher',
-      description: '',
-      urlImage: 'http://i.annihil.us/u/prod/marvel/i/mg/3/90/5261675f6b22f/standard_fantastic.jpg',
-    },
-    {
-      id: 1009666,
-      name: 'Thunderbird (John Proudstar)',
-      description:
-        'An exceptionally strong and vigorous athlete in his youth, John Proudstar&rsquo;s mutant abilities first manifested when he wrestled a charging bison to save a young girl.',
-      urlImage: 'http://i.annihil.us/u/prod/marvel/i/mg/a/f0/4c003aa43b1ec/standard_fantastic.jpg',
-    },
-  ];
+  const narratorName = 'Narrator';
 
-  console.log('selectedCharacters', selectedCharacters);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [dialogues, setDialogue] = useState('');
+
+  const handleClick = () => {
+    if (currentIndex < dialogues.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  // @ts-ignore
+  const selectedCharacters = useSelector((state): SelectedCharacters => state?.app.selectedCharacters);
 
   useEffect(() => {
     dispatch(loading(true));
-    // getScenario('Spider-man', 'Iron-man').then((response) => {
-    //   console.log('response', response);
-    //   dispatch(loading(false));
-    // });
+    getScenario(selectedCharacters[0].name, selectedCharacters[1].name).then((response) => {
+      console.log('response', response);
+      dispatch(loading(false));
+      setDialogue(response.split('\n'));
+    });
   }, []);
+
+  if (!dialogues) return <div>Loading...</div>;
+
+  const characterOneName = selectedCharacters[0].name;
+  const characterTwoName = selectedCharacters[1].name;
+
+  console.log('currentIndex', currentIndex);
+  console.log(dialogues[currentIndex]);
 
   return (
     <div className="board-page">
-      <article className="board-page__comic">
+      <article className="board-page__comic" onClick={handleClick}>
         <div className="board-page__panel">
           <div className="board-page__character">
             <div className="board-page__character--left">
-              <p className="board-page__speech board-page__speech--right">A speech bubble</p>
+              <p className="board-page__speech board-page__speech--right">
+                {dialogues[currentIndex].trimStart().startsWith(characterOneName)
+                  ? dialogues[currentIndex].split(characterOneName + ':').join('')
+                  : '...'}
+              </p>
               <Image
                 className="board-page__image"
                 src={selectedCharacters[0].urlImage}
@@ -70,11 +77,19 @@ export default function BoardPage() {
                 height={300}
                 alt="Picture of the first character"
               />
-              <p className="board-page__speech board-page__speech--left">A speech bubble</p>
+              <p className="board-page__speech board-page__speech--left">
+                {dialogues[currentIndex].trimStart().startsWith(characterTwoName)
+                  ? dialogues[currentIndex].split(characterTwoName + ':')
+                  : '...'}
+              </p>
             </div>
           </div>
 
-          <p className="board-page__text board-page__bottom-right">...something amazing happened</p>
+          <p className="board-page__text board-page__bottom-right">
+            {dialogues[currentIndex].trimStart().startsWith('Narrator')
+              ? dialogues[currentIndex].split(narratorName + ':')
+              : '...'}
+          </p>
         </div>
       </article>
     </div>

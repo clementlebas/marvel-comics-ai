@@ -47,9 +47,9 @@
   padding: 0.5em 1em;
   position: relative;
   color: black;
-  height: 100px;
+  height: auto;
   width: 300px;
-  top: -375px;
+  top: -330px;
 }
 
 .board-page__speech:before {
@@ -82,7 +82,6 @@
 
 .board-page__speech--left:after {
   border-left: solid 10px #fff;
-  
 }
 
 .board-page__speech--right:before {
@@ -96,17 +95,16 @@
 }
 
 .board-page__image {
-    border: solid 2px #000;
-    border-radius: 10px;
+  border: solid 2px #000;
+  border-radius: 10px;
 }
 
 .board-page__character {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 110%;
-    padding: 40px;
-    
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 110%;
+  padding: 40px;
 }
 
 .board-page__panel:nth-child(4n + 1) {

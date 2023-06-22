@@ -108,13 +108,13 @@ const MarvelCharacters: React.FC = () => {
               .map((id) => characters.find((character) => character.id === id))
               .map((character) => {
                 if (!character) return;
-                const { id, name, description } = character;
+                const { id, description } = character;
+                const name = character.name.replace(/\([^()]*\)/g, '').trim();
                 const urlImage = `${character.thumbnail.path}/standard_fantastic.${character.thumbnail.extension}`;
                 return { id, name, description, urlImage };
               });
 
             dispatch(setSelectedCharactersReducer({ selectedCharacters: selectedCharactersFormated }));
-            console.log(selectedCharactersFormated);
           }}
         >
           <h2 className={styles.center}>
