@@ -6,7 +6,7 @@ import { Tooltip, Button, Grid, Checkbox } from '@nextui-org/react';
 import { useDispatch } from 'react-redux';
 import Link from 'next/link';
 
-import { setSelectedCharactersReducer } from '../redux/appSlice';
+import { loading, setSelectedCharactersReducer } from '../redux/appSlice';
 import { fetchCharacters } from '../APIcalls';
 import styles from '../styles/page.module.css';
 import '../styles/marvelCharacters.css';
@@ -26,8 +26,10 @@ const MarvelCharacters: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(loading(true));
     fetchCharacters().then((response) => {
       setCharacters(response.data.results);
+      dispatch(loading(false));
     });
   }, []);
 

@@ -108,3 +108,7 @@ a {
     /* color-scheme: dark; */
   }
 }
+
+#nprogress div.bar {
+  height: 4px;
+}

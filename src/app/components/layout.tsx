@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { store } from '../redux/store';
 import styles from '../styles/page.module.css';
 import '../styles/globals.css';
+import "nprogress/nprogress.css";
 
 const inter = Inter({ subsets: ['latin'] });
 
