@@ -1,0 +1,114 @@
+.board-page {
+  width: 70%;
+}
+
+.board-page__comic {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: 'Comic Sans', cursive;
+  padding: 1vmin;
+  height: 100vh;
+}
+
+.board-page__panel {
+  background-color: #fff;
+  border: solid 2px #000;
+  box-shadow: 0 6px 6px -6px #000;
+  display: inline-block;
+  flex: 1 1;
+  height: 600px;
+  margin: 1vmin;
+  overflow: hidden;
+  position: relative;
+}
+
+.board-page__text {
+  background-color: #fff;
+  border: solid 2px #000;
+  margin: 0;
+  padding: 3px 10px;
+  color: black;
+}
+
+.board-page__bottom-right {
+  bottom: -2px;
+  position: absolute;
+  right: -6px;
+  transform: skew(-15deg);
+  width: 85%;
+}
+
+.board-page__speech {
+  background-color: #fff;
+  border: solid 2px #000;
+  border-radius: 12px;
+  display: inline-block;
+  margin: 0.5em;
+  padding: 0.5em 1em;
+  position: relative;
+  color: black;
+  height: 100px;
+  width: 300px;
+  top: -375px;
+}
+
+.board-page__speech:before {
+  border: solid 12px transparent;
+  border-top: solid 12px #000;
+  bottom: -24px;
+  content: '';
+  height: 0;
+  left: 24px;
+  position: absolute;
+  transform: skew(-15deg);
+  width: 0;
+}
+
+.board-page__speech:after {
+  border: solid 10px transparent;
+  border-top: solid 10px #fff;
+  bottom: -19px;
+  content: '';
+  height: 0;
+  left: 27px;
+  position: absolute;
+  transform: skew(-15deg);
+  width: 0;
+}
+
+.board-page__speech--left:before {
+  border-left: solid 12px #000;
+}
+
+.board-page__speech--left:after {
+  border-left: solid 10px #fff;
+  
+}
+
+.board-page__speech--right:before {
+  border-right: solid 12px #000;
+  left: 250px;
+}
+
+.board-page__speech--right:after {
+  border-right: solid 10px #fff;
+  left: 252px;
+}
+
+.board-page__image {
+    border: solid 2px #000;
+    border-radius: 10px;
+}
+
+.board-page__character {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 110%;
+    padding: 40px;
+    
+}
+
+.board-page__panel:nth-child(4n + 1) {
+  background-image: radial-gradient(circle, yellow, orange);
+}

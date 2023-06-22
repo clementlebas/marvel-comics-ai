@@ -100,7 +100,7 @@ const MarvelCharacters: React.FC = () => {
       </div>
       <div className={`${styles.grid} ${styles.center}`}>
         <Link
-          href="/secondPage"
+          href="/boardPage"
           className={styles.card}
           rel="noopener noreferrer"
           onClick={() => {
