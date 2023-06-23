@@ -52,15 +52,23 @@ export default function BoardPage() {
 
   return (
     <div className="board-page">
+      <h1>Click on the board to run the story</h1>
       <article className="board-page__comic" onClick={handleClick}>
         <div className="board-page__panel">
-          <div className="board-page__character">
-            <div className="board-page__character--left">
+          <div className="board-page__characters">
+            <div className="board-page__section board-page__section--top">
               <p className="board-page__speech board-page__speech--right">
                 {dialogues[currentIndex].trimStart().startsWith(characterOneName)
                   ? dialogues[currentIndex].split(characterOneName + ':').join('')
                   : '...'}
               </p>
+              <p className="board-page__speech board-page__speech--left">
+                {dialogues[currentIndex].trimStart().startsWith(characterTwoName)
+                  ? dialogues[currentIndex].split(characterTwoName + ':')
+                  : '...'}
+              </p>
+            </div>
+            <div className="board-page__section">
               <Image
                 className="board-page__image"
                 src={selectedCharacters[0].urlImage}
@@ -68,20 +76,13 @@ export default function BoardPage() {
                 height={300}
                 alt="Picture of the first character"
               />
-            </div>
-            <div className="board-page__character--right">
               <Image
                 className="board-page__image"
                 src={selectedCharacters[1].urlImage}
                 width={300}
                 height={300}
-                alt="Picture of the first character"
+                alt="Picture of the second character"
               />
-              <p className="board-page__speech board-page__speech--left">
-                {dialogues[currentIndex].trimStart().startsWith(characterTwoName)
-                  ? dialogues[currentIndex].split(characterTwoName + ':')
-                  : '...'}
-              </p>
             </div>
           </div>
 

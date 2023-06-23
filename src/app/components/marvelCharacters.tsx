@@ -101,7 +101,7 @@ const MarvelCharacters: React.FC = () => {
       <div className={`${styles.grid} ${styles.center}`}>
         <Link
           href="/boardPage"
-          className={styles.card}
+          className={`${styles.card} ${styles.button}`}
           rel="noopener noreferrer"
           onClick={() => {
             const selectedCharactersFormated = selectedCharacters
@@ -117,7 +117,7 @@ const MarvelCharacters: React.FC = () => {
             dispatch(setSelectedCharactersReducer({ selectedCharacters: selectedCharactersFormated }));
           }}
         >
-          <h2 className={styles.center}>
+          <h2 className={`${styles.center}`}>
             Start <span>-&gt;</span>
           </h2>
         </Link>
