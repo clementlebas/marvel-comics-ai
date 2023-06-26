@@ -28,11 +28,13 @@ const MarvelCharacters: React.FC = () => {
   const [selectedCharacters, setSelectedCharacters] = useState<number[]>([]);
 
   useEffect(() => {
-    dispatch(loading(true));
-    fetchCharacters().then((response) => {
-      setCharacters(response?.data.results);
-      dispatch(loading(false));
-    });
+    if (characters.length === 0) {
+      dispatch(loading(true));
+      fetchCharacters().then((response) => {
+        setCharacters(response?.data.results);
+        dispatch(loading(false));
+      });
+    }
 
     if (selectedCharacters.length >= 2) {
       setStartButtonDisable(false);
@@ -65,7 +67,6 @@ const MarvelCharacters: React.FC = () => {
             const imageIsNotFound = character.thumbnail.path.includes('image_not_available');
 
             if (imageIsNotFound) return;
-            // if (!character.description) return;
 
             return (
               <div
@@ -113,6 +114,7 @@ const MarvelCharacters: React.FC = () => {
           }`}
           rel="noopener noreferrer"
           onClick={() => {
+            dispatch(loading(true));
             const selectedCharactersFormated = selectedCharacters
               .map((id) => characters.find((character) => character.id === id))
               .map((character) => {

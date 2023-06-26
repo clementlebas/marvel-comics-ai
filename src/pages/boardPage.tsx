@@ -34,9 +34,7 @@ export default function BoardPage() {
   const selectedCharacters = useSelector((state): SelectedCharacters => state?.app.selectedCharacters);
 
   useEffect(() => {
-    dispatch(loading(true));
     getScenario(selectedCharacters[0].name, selectedCharacters[1].name).then((response) => {
-      console.log('response', response);
       dispatch(loading(false));
       setDialogue(response.split('\n'));
     });
@@ -46,9 +44,6 @@ export default function BoardPage() {
 
   const characterOneName = selectedCharacters[0].name;
   const characterTwoName = selectedCharacters[1].name;
-
-  console.log('currentIndex', currentIndex);
-  console.log(dialogues[currentIndex]);
 
   return (
     <div className="board-page">
