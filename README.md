@@ -5,7 +5,7 @@
 
   <h2 align="center">marvel-comics-ai</h3>
 
-  <a href="https://github.com/clementlebas/light-image-gallery/issues">Report Bug</a>
+  <a href="https://github.com/clementlebas/marvel-comics-ai/issues">Report Bug</a>
   <br />
   <br />
 </div>
