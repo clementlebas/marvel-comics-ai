@@ -15,7 +15,6 @@ jest.mock('nprogress', () => ({
 }));
 
 it('renders home page without crashing', () => {
-  const div = document.createElement('div');
   const { getByTestId } = render(
     <Provider store={store}>
       <Home />

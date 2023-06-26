@@ -11,7 +11,7 @@ export const fetchCharacters = async () => {
   }
 };
 
-export const getScenario = async (charactersOne: String, characterTwo: String) => {
+export const getScenario = async (charactersOne: string, characterTwo: string) => {
   try {
     const apiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY;
     const apiUrl = 'https://api.openai.com/v1/completions';
