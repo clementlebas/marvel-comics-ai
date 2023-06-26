@@ -22,18 +22,24 @@ interface Character {
 }
 
 const MarvelCharacters: React.FC = () => {
-  const [characters, setCharacters] = useState<Character[]>([]);
   const dispatch = useDispatch();
+  const [characters, setCharacters] = useState<Character[]>([]);
+  const [startButtonDisable, setStartButtonDisable] = useState<boolean>(true);
+  const [selectedCharacters, setSelectedCharacters] = useState<number[]>([]);
 
   useEffect(() => {
     dispatch(loading(true));
     fetchCharacters().then((response) => {
-      setCharacters(response.data.results);
+      setCharacters(response?.data.results);
       dispatch(loading(false));
     });
-  }, []);
 
-  const [selectedCharacters, setSelectedCharacters] = useState<number[]>([]);
+    if (selectedCharacters.length >= 2) {
+      setStartButtonDisable(false);
+    } else {
+      setStartButtonDisable(true);
+    }
+  }, [selectedCharacters]);
 
   const handleCharacterSelect = (characterId: number) => {
     if (selectedCharacters.includes(characterId)) {
@@ -100,8 +106,11 @@ const MarvelCharacters: React.FC = () => {
       </div>
       <div className={`${styles.grid} ${styles.center}`}>
         <Link
+          data-testid="start-button"
           href="/boardPage"
-          className={`${styles.card} ${styles.button}`}
+          className={`${styles.card} ${styles.button} ${
+            startButtonDisable ? 'marvel-characters__button--disable' : ''
+          }`}
           rel="noopener noreferrer"
           onClick={() => {
             const selectedCharactersFormated = selectedCharacters

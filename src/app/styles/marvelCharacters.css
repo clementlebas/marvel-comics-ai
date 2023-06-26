@@ -1,61 +1,65 @@
 .marvel-characters__container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 70%;
-    margin: 0 auto;
-  }
-  
-  .marvel-characters__tab {
-    width: 100%;
-    margin-top: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .marvel-characters__header {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    background-color: rgb(241, 241, 241, 0.7);
-    font-weight: bold;
-  }
-  
-  .marvel-characters__row {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-    cursor: pointer;
-  }
-  
-  .marvel-characters__column {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 5px;
-  }
-  
-  .marvel-characters__column:first-child {
-    flex: 0.5;
-  }
-  
-  .marvel-characters__column:last-child {
-    position: relative;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  margin: 0 auto;
+}
 
-  .marvel-characters__img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-  }
-  
-  .info-icon {
-    cursor: pointer;
-    color: white;
-  }
-  
-  .info-icon:hover {
-    color: #555;
-  }
+.marvel-characters__tab {
+  width: 100%;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.marvel-characters__header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: rgb(241, 241, 241, 0.7);
+  font-weight: bold;
+}
+
+.marvel-characters__row {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.marvel-characters__column {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.marvel-characters__column:first-child {
+  flex: 0.5;
+}
+
+.marvel-characters__column:last-child {
+  position: relative;
+}
+
+.marvel-characters__img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.marvel-characters__button--disable {
+  pointer-events: none;
+}
+
+.info-icon {
+  cursor: pointer;
+  color: white;
+}
+
+.info-icon:hover {
+  color: #555;
+}
