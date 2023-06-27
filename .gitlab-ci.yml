@@ -20,7 +20,7 @@ test:
   stage: test
   image: node:latest
   script:
-    - npm install
+    - npm install --legacy-peer-deps
     - npm run lint-code
     - npm run lint-style
     - npm run test:watch
