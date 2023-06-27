@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky install",
+    "test": "jest --silent",
     "test:watch": "jest --watch --silent",
     "lint-code": "eslint 'src/**/*.{js,ts,tsx}'",
     "lint-style": "stylelint 'src/**/*.css'",

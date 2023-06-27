@@ -23,4 +23,4 @@ test:
     - npm install --legacy-peer-deps
     - npm run lint-code
     - npm run lint-style
-    - npm run test:watch
+    - npm run test
