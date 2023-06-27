@@ -72,7 +72,6 @@
   color: black;
   height: auto;
   width: 300px;
-  /* top: -330px; */
 }
 
 .board-page__image {
@@ -80,7 +79,7 @@
   border-radius: 10px;
 }
 
-.board-page__speech:before {
+.board-page__speech::before {
   border: solid 12px transparent;
   border-top: solid 12px #000;
   bottom: -24px;
@@ -92,7 +91,7 @@
   width: 0;
 }
 
-.board-page__speech:after {
+.board-page__speech::after {
   border: solid 10px transparent;
   border-top: solid 10px #fff;
   bottom: -19px;
@@ -103,22 +102,22 @@
   width: 0;
 }
 
-.board-page__speech--left:before {
+.board-page__speech--left::before {
   border-left: solid 12px #000;
   left: 100px;
 }
 
-.board-page__speech--left:after {
+.board-page__speech--left::after {
   border-left: solid 10px #fff;
   left: 102px;
 }
 
-.board-page__speech--right:before {
+.board-page__speech--right::before {
   border-right: solid 12px #000;
   left: 200px;
 }
 
-.board-page__speech--right:after {
+.board-page__speech--right::after {
   border-right: solid 10px #fff;
   left: 202px;
 }

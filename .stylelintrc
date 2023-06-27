@@ -1,23 +1,15 @@
 {
-  "extends": [
-    "stylelint-config-standard",
-    "stylelint-config-prettier"
-  ],
-  "plugins": [
-    "stylelint-prettier"
-  ],
+  "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
+  "plugins": ["stylelint-prettier"],
   "rules": {
     "prettier/prettier": true,
+    "selector-class-pattern": null,
     "max-nesting-depth": [
       1,
       {
-        "ignore": [
-          "pseudo-classes",
-          "blockless-at-rules"
-        ]
+        "ignore": ["pseudo-classes", "blockless-at-rules"]
       }
     ],
     "selector-nested-pattern": "^&:"
   }
 }
-

@@ -10,7 +10,9 @@
     "prepare": "husky install",
     "test:watch": "jest --watch --silent",
     "lint-code": "eslint 'src/**/*.{js,ts,tsx}'",
-    "lint-style": "stylelint 'src/**/*.css'"
+    "lint-style": "stylelint 'src/**/*.css'",
+    "lint-style:fix": "stylelint 'src/**/*.css' --fix"
+
   },
   "dependencies": {
     "@types/node": "20.3.1",
