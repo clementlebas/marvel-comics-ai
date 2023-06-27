@@ -5,6 +5,7 @@ import { FiInfo } from 'react-icons/fi';
 import { Tooltip, Button, Grid, Checkbox } from '@nextui-org/react';
 import { useDispatch } from 'react-redux';
 import Link from 'next/link';
+import Image from 'next/image';
 
 import { loading, setSelectedCharactersReducer } from '../redux/appSlice';
 import { fetchCharacters } from '../APIcalls';
@@ -41,7 +42,7 @@ const MarvelCharacters: React.FC = () => {
     } else {
       setStartButtonDisable(true);
     }
-  }, [selectedCharacters]);
+  }, [selectedCharacters, characters.length, dispatch]);
 
   const handleCharacterSelect = (characterId: number) => {
     if (selectedCharacters.includes(characterId)) {
@@ -76,6 +77,7 @@ const MarvelCharacters: React.FC = () => {
               >
                 <div className="marvel-characters__column">
                   <Checkbox
+                    aria-label="Select Marvel character"
                     onChange={() => handleCharacterSelect(character.id)}
                     size="lg"
                     color="gradient"
@@ -84,10 +86,12 @@ const MarvelCharacters: React.FC = () => {
                   />
                 </div>
                 <div className="marvel-characters__column">
-                  <img
+                  <Image
                     src={`${character.thumbnail.path}/standard_fantastic.${character.thumbnail.extension}`}
-                    alt={character.name}
+                    alt={`Illustration of ${character.name} super hero`}
                     className="marvel-characters__img"
+                    width={60}
+                    height={60}
                   />
                 </div>
                 <div className="marvel-characters__column">{character.name}</div>

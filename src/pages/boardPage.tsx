@@ -15,7 +15,7 @@ interface SelectedCharacter {
   urlImage: string;
 }
 
-interface SelectedCharacters extends Array<SelectedCharacter> {}
+type SelectedCharacters = Array<SelectedCharacter>;
 
 export default function BoardPage() {
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ export default function BoardPage() {
       dispatch(loading(false));
       setDialogue(response.split('\n'));
     });
-  }, []);
+  }, [dispatch, selectedCharacters]);
 
   if (!dialogues) return <div>Loading...</div>;
 
